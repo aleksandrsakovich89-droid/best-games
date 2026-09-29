@@ -45,3 +45,79 @@ body {
 #games article[data-search-match="false"] {
   display: none;
 }
+
+@media (max-width: 1023px) {
+  main > section > div.grid > div[class*="aspect-[4/5]"] {
+    order: 0 !important;
+  }
+
+  main > section > div.grid > div[class*="aspect-[4/5]"] + div {
+    order: 1 !important;
+  }
+}
+
+@media (max-width: 639px) {
+  #top > div.grid {
+    gap: 2.5rem;
+  }
+
+  #legends-title,
+  #games-title {
+    font-size: 1.875rem;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+
+  #games article > div:nth-child(2) h3 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  #games article > div:first-child > div.absolute.bottom-4 > span:last-child {
+    max-width: calc(100% - 5rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #games article button[aria-pressed] {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  main > section > div.grid > div[class*="order-1"] h1 {
+    max-width: 100%;
+    font-size: 2.5rem;
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
+
+  nav[aria-label="Мобильная навигация"] a {
+    padding-block: 0.5rem;
+  }
+}
+
+@media (max-width: 414px) {
+  main > nav[aria-label="Основная навигация"] {
+    padding: 1.125rem 1rem;
+  }
+
+  main > nav[aria-label="Основная навигация"] > a {
+    gap: 0.5rem;
+  }
+
+  main > nav[aria-label="Основная навигация"] > span:last-child {
+    display: none;
+  }
+
+  nav[aria-label="Мобильная навигация"] {
+    padding-inline: 1rem;
+  }
+
+  #top,
+  #legends,
+  #years,
+  #games {
+    padding-inline: 1rem;
+  }
+}

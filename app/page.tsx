@@ -328,7 +328,7 @@ export default function Home() {
           <span className="flex h-9 w-9 items-center justify-center border border-amber-300/70 text-xs font-bold tracking-[-0.08em] text-amber-200 transition-colors group-hover:bg-amber-200 group-hover:text-[#08090b]">BG</span>
           <span className="text-sm font-semibold tracking-[0.22em] text-white">BEST GAMES</span>
         </a>
-        <div className="hidden items-center gap-8 text-[11px] font-medium uppercase tracking-[0.18em] text-white/55 md:flex">
+        <div className="hidden items-center gap-8 text-[11px] font-medium uppercase tracking-[0.18em] text-white/55 lg:flex">
           <a className="text-amber-200" href="#top">Главная</a>
           <AllGamesLink />
           <a className="transition-colors hover:text-white" href="#years">По годам</a>
@@ -338,6 +338,14 @@ export default function Home() {
         <span className="text-[10px] uppercase tracking-[0.2em] text-white/35">36 ЛЕГЕНДАРНЫХ ИГР</span>
       </nav>
 
+      <nav className="relative z-10 mx-auto flex w-full max-w-7xl flex-wrap items-center gap-x-4 gap-y-1 px-6 pb-4 text-[10px] font-medium uppercase tracking-[0.14em] text-white/55 lg:hidden" aria-label="Мобильная навигация">
+        <a className="py-2 text-amber-200" href="#top">Главная</a>
+        <AllGamesLink />
+        <a className="py-2 transition-colors hover:text-white" href="#years">По годам</a>
+        <a className="py-2 transition-colors hover:text-white" href="#legends">Легенды</a>
+        <FavoritesLink />
+      </nav>
+
       <section id="top" className="relative z-10 mx-auto flex min-h-[calc(100vh-89px)] w-full max-w-7xl items-center px-6 pb-16 pt-8 sm:px-10 lg:px-12">
         <div className="grid w-full items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           <div className="max-w-2xl">
@@ -345,7 +353,7 @@ export default function Home() {
               <span className="h-px w-10 bg-amber-300" />
               Золотая коллекция
             </p>
-            <h1 className="font-serif text-[clamp(4.5rem,12vw,9.5rem)] font-medium leading-[0.78] tracking-[-0.075em] text-white">
+            <h1 className="font-serif text-5xl font-medium leading-[0.82] tracking-[-0.075em] text-white sm:text-[clamp(4.5rem,12vw,9.5rem)] sm:leading-[0.78]">
               BEST<br /><span className="text-white/25">GAMES</span>
             </h1>
             <div className="mt-9 flex flex-col gap-7 sm:flex-row sm:items-end sm:gap-12">

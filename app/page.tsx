@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import Image from 'next/image';
 import GameDecadeProvider, { AllGamesLink, FavoriteGameCard, FavoriteGamesSection, FavoriteToggle, FavoritesLink, GameDecadeCount, GameDecadeFilter, GameSearchInput, GameSectionTitle, SortedGameGrid } from './game-decade-filter';
 
 const legendaryGames = [
@@ -397,8 +399,8 @@ export default function Home() {
 
         <div className="grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
           {spotlightLegend && (
-            <a href={gamePages[spotlightLegend.title]} className="group relative flex min-h-[32rem] flex-col overflow-hidden border border-amber-200/25 bg-[#141821] shadow-2xl shadow-black/40">
-              <img src={featuredLegendImages[spotlightLegend.title]} alt={spotlightLegend.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Link href={gamePages[spotlightLegend.title]} className="group relative flex min-h-[32rem] flex-col overflow-hidden border border-amber-200/25 bg-[#141821] shadow-2xl shadow-black/40">
+              <Image src={featuredLegendImages[spotlightLegend.title]} alt={spotlightLegend.title} fill sizes="(max-width: 1023px) calc(100vw - 2rem), 58vw" quality={85} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#08090b] via-[#08090b]/25 to-transparent" />
               <span className="absolute left-5 top-5 border border-amber-200/35 bg-black/30 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.22em] text-amber-100/80 backdrop-blur-sm">01 / The original</span>
               <div className="relative mt-auto p-6 sm:p-8">
@@ -409,14 +411,14 @@ export default function Home() {
                   Открыть легенду <span className="text-base">↗</span>
                 </span>
               </div>
-            </a>
+            </Link>
           )}
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {supportingLegends.map((game, index) => (
-              <a key={game.title} href={gamePages[game.title]} className="group flex min-h-24 overflow-hidden border border-white/10 bg-[#0d0f13]/80 transition-colors hover:border-amber-200/40 hover:bg-[#111318]">
+              <Link key={game.title} href={gamePages[game.title]} className="group flex min-h-24 overflow-hidden border border-white/10 bg-[#0d0f13]/80 transition-colors hover:border-amber-200/40 hover:bg-[#111318]">
                 <div className="relative w-28 shrink-0 overflow-hidden bg-[#141821] sm:w-32">
-                  <img src={featuredLegendImages[game.title]} alt={game.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src={featuredLegendImages[game.title]} alt={game.title} fill sizes="128px" quality={85} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0d0f13]/50" />
                 </div>
                 <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-3">
@@ -425,7 +427,7 @@ export default function Home() {
                   <p className="mt-1 line-clamp-2 text-xs leading-5 text-white/55">{game.description}</p>
                 </div>
                 <span className="flex items-center px-3 text-sm text-amber-100/70 transition-transform group-hover:translate-x-1">↗</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -447,324 +449,468 @@ export default function Home() {
               <div className="relative h-52 overflow-hidden border-b border-white/10 bg-[#141821]" style={{ background: game.title === 'DOOM' || game.title === 'Diablo' || game.title === 'Half-Life' || game.title === 'Counter-Strike' || game.title === 'GTA: San Andreas' || game.title === 'The Witcher 3' || game.title === 'Wolfenstein 3D' || game.title === 'Warcraft II' || game.title === 'Heroes of Might and Magic III' || game.title === 'Age of Empires II' || game.title === 'StarCraft' || game.title === 'Deus Ex' || game.title === 'Max Payne' || game.title === 'Morrowind' || game.title === 'Gothic' || game.title === 'Warcraft III' || game.title === 'Mafia' || game.title === 'Prince of Persia: The Sands of Time' || game.title === 'Need for Speed: Underground' || game.title === 'Half-Life 2' || game.title === 'World of Warcraft' || game.title === 'S.T.A.L.K.E.R.: Shadow of Chernobyl' || game.title === 'BioShock' || game.title === 'Assassin’s Creed' || game.title === 'Fallout 3' || game.title === 'Mass Effect' || game.title === 'Dead Space' || game.title === 'Mirror’s Edge' || game.title === 'Minecraft' || game.title === 'The Elder Scrolls V: Skyrim' || game.title === 'Dark Souls' || game.title === 'Dishonored' || game.title === 'Far Cry 3' || game.title === 'The Last of Us' || game.title === 'GTA V' || game.title === 'Cyberpunk 2077' ? 'transparent' : game.gradient }}>
                 {game.title === 'DOOM' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/doom.png"
                       alt="DOOM"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Diablo' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/diablo.png"
                       alt="Diablo"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Half-Life' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/half-life.png"
                       alt="Half-Life"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Counter-Strike' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/counter-strike.png"
                       alt="Counter-Strike"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'GTA: San Andreas' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/gta-san-andreas.png"
                       alt="GTA: San Andreas"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'The Witcher 3' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/the-witcher-3.png"
                       alt="The Witcher 3"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Wolfenstein 3D' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/wolfenstein-3d.png"
                       alt="Wolfenstein 3D"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Warcraft II' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/warcraft-2.png"
                       alt="Warcraft II"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Heroes of Might and Magic III' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/heroes-3.png"
                       alt="Heroes of Might and Magic III"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Age of Empires II' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/age-of-empires-2.png"
                       alt="Age of Empires II"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'StarCraft' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/starcraft.png"
                       alt="StarCraft"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Deus Ex' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/deus-ex.png"
                       alt="Deus Ex"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Max Payne' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/max-payne.png"
                       alt="Max Payne"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Morrowind' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/morrowind.png"
                       alt="Morrowind"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Gothic' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/gothic.png"
                       alt="Gothic"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Warcraft III' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/warcraft-3.png"
                       alt="Warcraft III"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Mafia' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/mafia.png"
                       alt="Mafia"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Prince of Persia: The Sands of Time' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/prince-of-persia.png"
                       alt="Prince of Persia: The Sands of Time"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Need for Speed: Underground' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/need-for-speed-underground.png"
                       alt="Need for Speed: Underground"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Half-Life 2' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/half-life-2.png"
                       alt="Half-Life 2"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'World of Warcraft' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/world-of-warcraft.png"
                       alt="World of Warcraft"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'S.T.A.L.K.E.R.: Shadow of Chernobyl' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/stalker-shadow-of-chernobyl.png"
                       alt="S.T.A.L.K.E.R.: Shadow of Chernobyl"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'BioShock' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/bioshock.png"
                       alt="BioShock"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Assassin’s Creed' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/assassins-creed.png"
                       alt="Assassin’s Creed"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Fallout 3' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/fallout-3.png"
                       alt="Fallout 3"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Mass Effect' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/mass-effect.png"
                       alt="Mass Effect"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Dead Space' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/dead-space.png"
                       alt="Dead Space"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Mirror’s Edge' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/mirrors-edge.png"
                       alt="Mirror’s Edge"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Minecraft' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/minecraft.png"
                       alt="Minecraft"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'The Elder Scrolls V: Skyrim' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/skyrim.png"
                       alt="The Elder Scrolls V: Skyrim"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Dark Souls' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/dark-souls.png"
                       alt="Dark Souls"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Dishonored' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/dishonored.png"
                       alt="Dishonored"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Far Cry 3' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/far-cry-3.png"
                       alt="Far Cry 3"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'The Last of Us' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/the-last-of-us.png"
                       alt="The Last of Us"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'GTA V' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/gta-5.png"
                       alt="GTA V"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
                   </>
                 ) : game.title === 'Cyberpunk 2077' ? (
                   <>
-                    <img
+                    <Image
                       src="/games/cyberpunk-2077.png"
                       alt="Cyberpunk 2077"
+                      fill
+                      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2rem), 376px"
+                      quality={85}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/15 to-transparent" />
@@ -794,15 +940,15 @@ export default function Home() {
 
                 <div className="mt-auto pt-6">
                   {game.title === 'DOOM' ? (
-                    <a href="/games/doom" className="inline-flex items-center gap-3 border border-amber-200/45 bg-amber-200/5 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-100 transition-colors hover:border-amber-200 hover:bg-amber-200 hover:text-[#08090b]">
+                    <Link href="/games/doom" className="inline-flex items-center gap-3 border border-amber-200/45 bg-amber-200/5 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-100 transition-colors hover:border-amber-200 hover:bg-amber-200 hover:text-[#08090b]">
                       Подробнее
                       <span className="text-base leading-none">↗</span>
-                    </a>
+                    </Link>
                   ) : (
-                    <a href={gamePages[game.title]} className="inline-flex items-center gap-3 border border-amber-200/45 bg-amber-200/5 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-100 transition-colors hover:border-amber-200 hover:bg-amber-200 hover:text-[#08090b]">
+                    <Link href={gamePages[game.title]} className="inline-flex items-center gap-3 border border-amber-200/45 bg-amber-200/5 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-100 transition-colors hover:border-amber-200 hover:bg-amber-200 hover:text-[#08090b]">
                       Подробнее
                       <span className="text-base leading-none">↗</span>
-                    </a>
+                    </Link>
                   )}
                 </div>
               </div>

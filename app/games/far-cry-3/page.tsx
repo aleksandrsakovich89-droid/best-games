@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function FarCry3Page() {
   return (
@@ -17,7 +18,7 @@ export default function FarCry3Page() {
       <section className="relative z-10 mx-auto flex min-h-[calc(100vh-89px)] w-full max-w-7xl items-center px-6 pb-16 pt-8 sm:px-10 lg:px-12">
         <div className="grid w-full items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <div className="relative order-2 aspect-[4/5] w-full max-w-2xl overflow-hidden border border-white/20 bg-[#141821] shadow-2xl shadow-black/60 lg:order-1">
-            <img src="/games/far-cry-3.png" alt="Far Cry 3" className="h-full w-full object-cover" />
+            <Image src="/games/far-cry-3.png" alt="Far Cry 3" fill sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1023px) calc(100vw - 5rem), (max-width: 1279px) 45vw, 50vw" quality={85} loading="eager" className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/10 to-transparent" />
             <div className="absolute left-5 top-5 border border-white/20 bg-black/25 px-3 py-2 text-[10px] uppercase tracking-[0.22em] text-white/65 backdrop-blur-sm">2012 / Classic</div>
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between border-t border-white/20 pt-4">

@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#years[data-game-decade="1990"] ~ #games article:not([data-decade="1990"]),
+#years[data-game-decade="2000"] ~ #games article:not([data-decade="2000"]),
+#years[data-game-decade="2010"] ~ #games article:not([data-decade="2010"]),
+#years[data-game-decade="2020"] ~ #games article:not([data-decade="2020"]) {
+  display: none;
+}
+
+#games[data-favorites-only="true"] article:not([data-favorite="true"]) {
+  display: none;
+}
+
+#games article[data-search-match="false"] {
+  display: none;
+}

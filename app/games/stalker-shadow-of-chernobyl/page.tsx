@@ -1,9 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
+import { GameStructuredData, getGameMetadata } from "../../seo";
+
+export const metadata = getGameMetadata("stalker-shadow-of-chernobyl");
 
 export default function StalkerShadowOfChernobylPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#08090b] text-white selection:bg-amber-300 selection:text-[#08090b]">
+      <GameStructuredData slug="stalker-shadow-of-chernobyl" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_68%_38%,rgba(177,116,42,0.18),transparent_30%),linear-gradient(112deg,#08090b_18%,#111217_58%,#17120f)]" />
       <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_78%)]" />
 

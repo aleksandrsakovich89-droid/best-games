@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { homeMetadata, SiteStructuredData } from './seo';
 import GameDecadeProvider, { AllGamesLink, FavoriteGameCard, FavoriteGamesSection, FavoriteToggle, FavoritesLink, GameDecadeCount, GameDecadeFilter, GameSearchInput, GameSectionTitle, SortedGameGrid } from './game-decade-filter';
+
+export const metadata = homeMetadata;
 
 const legendaryGames = [
   {
@@ -322,6 +325,7 @@ export default function Home() {
   return (
     <GameDecadeProvider games={legendaryGames.map(({ title, genre, year }) => ({ title, genre, year }))}>
     <main className="relative min-h-screen overflow-hidden bg-[#08090b] text-white selection:bg-amber-300 selection:text-[#08090b]">
+      <SiteStructuredData />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_72%_46%,rgba(177,116,42,0.16),transparent_26%),linear-gradient(112deg,#08090b_18%,#111217_58%,#17120f)]" />
       <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_78%)]" />
 
